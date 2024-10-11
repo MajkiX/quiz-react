@@ -1,0 +1,44 @@
+.quizElement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10vh;
+
+    &__answer-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__answer-button {
+        padding: 20px;
+        height: 10vh;
+        width: 8vw;
+        margin: 0 1vw;
+    }
+
+    &__category {
+        text-align: center;
+    }
+
+    &__question {
+        text-align: center;
+    }
+
+    &__answer {
+        text-align: center;
+        font-weight: 800;
+    }
+
+    &__next-button {
+        width: 15vw;
+        height: 5vh;
+    }
+
+    &__result-button {
+        width: 15vw;
+        height: 5vh;
+        background-color: greenyellow;
+    }
+}

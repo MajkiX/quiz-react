@@ -1,0 +1,15 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__start-button {
+        height: 10vh;
+        width: 20vw;
+        margin-top: 30vh;
+        background-color: greenyellow;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+}
