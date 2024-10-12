@@ -16,6 +16,14 @@
         height: 10vh;
         width: 8vw;
         margin: 0 1vw;
+        cursor: pointer;
+        background-color: rgb(185, 247, 226);
+        border: none;
+        font-size: 1rem;
+
+        &:hover {
+            background-color: rgb(235, 254, 248);
+        }
     }
 
     &__category {
@@ -34,11 +42,28 @@
     &__next-button {
         width: 15vw;
         height: 5vh;
+        cursor: pointer;
+        background-color: rgb(185, 247, 226);
+        border: none;
+        font-size: 1.5rem;
+        margin-top: 5vh;
+
+        &:hover {
+            background-color: rgb(235, 254, 248);
+        }
     }
 
     &__result-button {
         width: 15vw;
         height: 5vh;
-        background-color: greenyellow;
+        cursor: pointer;
+        background-color: rgb(121, 255, 210);
+        border: none;
+        font-size: 1.5rem;
+        margin-top: 5vh;
+
+        &:hover {
+            background-color: rgb(235, 254, 248);
+        }
     }
 }

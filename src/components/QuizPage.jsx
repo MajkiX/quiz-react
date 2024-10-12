@@ -5,6 +5,7 @@ import axios from 'axios';
 import bemCssModules from 'bem-css-modules'
 import { default as QuizPageStyle } from './styleModules/QuizPage.module.scss'
 import ResultPage from './ResultPage';
+import { useLocation } from 'react-router-dom';
 
 const style = bemCssModules(QuizPageStyle)
 
@@ -15,9 +16,13 @@ const EasyQuizPage = () => {
     const [questionNumber, setQuestionNumber] = useState(0)
     const [answer, setAnswer] = useState('Chosse an answer')
     const [points, setPoints] = useState(0)
+    const location = useLocation()
+
+    const difficulty = location.state?.difficulty
+
 
     const fetchQuestions = async () => {
-        const result = await axios("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple")
+        const result = await axios(`https://opentdb.com/api.php?amount=10&difficulty=${difficulty}&type=multiple`)
         setQuestions(result.data.results)
     }
 
@@ -42,7 +47,7 @@ const EasyQuizPage = () => {
         setShowQuestions(!showQuestions)
     }
 
-    const handleCheckButton = (answer) => {
+    const handleAnswerButton = (answer) => {
         setAnswer(answer)
     }
 
@@ -58,7 +63,12 @@ const EasyQuizPage = () => {
         setPoints(0)
     }
 
-    const showStartButton = !showQuestions && !showResults && <button onClick={showQuestionsBoxes} className={style("start-button")}>Start</button>
+    const showStartButton = !showQuestions && !showResults &&
+        <div className={style("start-box")}>
+            <h1 className={style("dificulty-level")}>You choose a difficulty: {difficulty}</h1>
+            <button onClick={showQuestionsBoxes} className={style("start-button")}>Start</button>
+        </div>
+
     const showQuizElement = showQuestions && questions && questionNumber !== 10 &&
         <QuizElement
             category={questions[questionNumber].category}
@@ -67,7 +77,7 @@ const EasyQuizPage = () => {
             incorrect_answers={questions[questionNumber].incorrect_answers}
             questionNumber={questionNumber}
             nextQuestion={nextQuestion}
-            handleCheckButton={handleCheckButton}
+            handleCheckButton={handleAnswerButton}
             hideQuestions={hideQuestions}
             handleShowResults={handleShowResults}
             answer={answer}

@@ -12,10 +12,10 @@ const QuizElement = (props) => {
 
     useEffect(() => {
         const arrayOfAnswers = [...incorrect_answers, correct_answer];
-        // let randomIndex = Math.floor(Math.random() * 4);
-        // let temp = arrayOfAnswers[randomIndex];
-        // arrayOfAnswers[randomIndex] = arrayOfAnswers[3];
-        // arrayOfAnswers[3] = temp;
+        let randomIndex = Math.floor(Math.random() * 4);
+        let temp = arrayOfAnswers[randomIndex];
+        arrayOfAnswers[randomIndex] = arrayOfAnswers[3];
+        arrayOfAnswers[3] = temp;
 
         setShuffledAnswers(arrayOfAnswers);
     }, [correct_answer, incorrect_answers])

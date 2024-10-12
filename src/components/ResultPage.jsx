@@ -8,11 +8,11 @@ const ResultPage = (props) => {
     const { points, resetValues } = props
 
     return (
-        <div>
+        <div className={style()}>
             <h1>Your Results:</h1>
             <h2>{points} / 10</h2>
             {points === 10 ? <h2>Congratulations</h2> : null}
-            <Link to="/MainPage"><button onClick={resetValues}>Return to Main Page</button></Link>
+            <Link to="/MainPage"><button className={style("return-button")} onClick={resetValues}>Return to Main Page</button></Link>
         </div>
     );
 }
