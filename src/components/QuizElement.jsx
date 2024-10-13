@@ -9,7 +9,7 @@ const QuizElement = (props) => {
 
     const [shuffledAnswers, setShuffledAnswers] = useState([]);
 
-
+    // randomization of idexes in array
     useEffect(() => {
         const arrayOfAnswers = [...incorrect_answers, correct_answer];
         let randomIndex = Math.floor(Math.random() * 4);

@@ -7,10 +7,8 @@ function App() {
 
   return (
    <Router>
-     <>
         <Header />
         <Main />
-     </>
    </Router>
   );
 }

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import QuizElement from './QuizElement';
 import axios from 'axios';
+import anime from 'animejs'
 
 import bemCssModules from 'bem-css-modules'
 import { default as QuizPageStyle } from './styleModules/QuizPage.module.scss'
@@ -17,6 +18,7 @@ const EasyQuizPage = () => {
     const [answer, setAnswer] = useState('Chosse an answer')
     const [points, setPoints] = useState(0)
     const location = useLocation()
+    const quizBoxRef = useRef(null)
 
     const difficulty = location.state?.difficulty
 
@@ -28,14 +30,29 @@ const EasyQuizPage = () => {
 
     const nextQuestion = () => {
         if (answer === questions[questionNumber].correct_answer) {
-            setPoints(points + 1)
+            setPoints(points + 1);
         }
-        if (questionNumber < questions.length - 1) {
-            setQuestionNumber(questionNumber + 1);
-            setAnswer('Choose an answer')
-        } else {
-            return
-        }
+        anime({
+            targets: quizBoxRef.current,
+            opacity: 0,
+            duration: 250,
+            easing: 'easeInOutQuad',
+            complete: () => {
+                if (questionNumber < questions.length - 1) {
+                    setQuestionNumber(prev => prev + 1);
+                    setAnswer('Choose an answer');
+
+                    anime({
+                        targets: quizBoxRef.current,
+                        translateX: '0px',
+                        opacity: 1,
+                        duration: 250
+                    });
+                } else {
+                    handleShowResults();
+                }
+            }
+        });
     }
 
     const handleShowResults = () => {
@@ -70,18 +87,20 @@ const EasyQuizPage = () => {
         </div>
 
     const showQuizElement = showQuestions && questions && questionNumber !== 10 &&
-        <QuizElement
-            category={questions[questionNumber].category}
-            question={questions[questionNumber].question}
-            correct_answer={questions[questionNumber].correct_answer}
-            incorrect_answers={questions[questionNumber].incorrect_answers}
-            questionNumber={questionNumber}
-            nextQuestion={nextQuestion}
-            handleCheckButton={handleAnswerButton}
-            hideQuestions={hideQuestions}
-            handleShowResults={handleShowResults}
-            answer={answer}
-        />
+        <div ref={quizBoxRef} className={style('quizBox')}>
+            <QuizElement
+                category={questions[questionNumber].category}
+                question={questions[questionNumber].question}
+                correct_answer={questions[questionNumber].correct_answer}
+                incorrect_answers={questions[questionNumber].incorrect_answers}
+                questionNumber={questionNumber}
+                nextQuestion={nextQuestion}
+                handleCheckButton={handleAnswerButton}
+                hideQuestions={hideQuestions}
+                handleShowResults={handleShowResults}
+                answer={answer}
+            />
+        </div>
 
     return (
         <div className={style()}>
