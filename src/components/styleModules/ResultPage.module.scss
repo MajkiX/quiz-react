@@ -1,6 +1,6 @@
 .result-page {
-    height: 40vh;
-    width: 50vw;
+    height: 50vh;
+    width: 70vw;
     border: 2px solid rgb(177, 255, 222);
     border-radius: 5px;
     background-color: rgb(220, 241, 234);
@@ -20,5 +20,32 @@
         &:hover {
             background-color: rgb(235, 254, 248);
         }
+    }
+
+    &__result-box-container {
+        display: flex;
+        justify-content: center;
+        gap: 1vw;
+        margin-bottom: 10vh;
+    }
+
+    &__result-box-true {
+        background-color: green;
+        height: 2vw;
+        width: 2vw;
+        padding: 10px;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    &__result-box-false {
+        background-color: red;
+        height: 2vw;
+        width: 2vw;
+        padding: 10px;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
     }
 }

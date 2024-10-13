@@ -19,6 +19,7 @@ const EasyQuizPage = () => {
     const [questionNumber, setQuestionNumber] = useState(0)
     const [answer, setAnswer] = useState('Chosse an answer')
     const [points, setPoints] = useState(0)
+    const [answerArray, setAnswerArray] = useState([])
     const location = useLocation()
     const quizBoxRef = useRef(null)
 
@@ -46,6 +47,9 @@ const EasyQuizPage = () => {
     const nextQuestion = () => {
         if (answer === questions[questionNumber].correct_answer) {
             setPoints(points + 1);
+            setAnswerArray([...answerArray, { isCorrect: true, answer: answer }])
+        } else {
+            setAnswerArray([...answerArray, { isCorrect: false, answer: answer }])
         }
         anime({
             targets: quizBoxRef.current,
@@ -93,6 +97,7 @@ const EasyQuizPage = () => {
         setQuestionNumber(0)
         setAnswer("Chosse an answer")
         setPoints(0)
+        setAnswerArray([])
     }
 
     const showStartButton = !showQuestions && !showResults &&
@@ -102,7 +107,7 @@ const EasyQuizPage = () => {
         </div>
 
     const showQuizElement = showQuestions && questions && questionNumber !== 10 &&
-        <div ref={quizBoxRef} className={style('quizBox')}>
+        <div ref={quizBoxRef}>
             <QuizElement
                 category={questions[questionNumber].category}
                 question={questions[questionNumber].question}
@@ -121,7 +126,7 @@ const EasyQuizPage = () => {
         <div className={style()}>
             {showStartButton}
             {showQuizElement}
-            {!showResults ? null : <ResultPage points={points} resetValues={resetValues} />}
+            {!showResults ? null : <ResultPage points={points} answerArray={answerArray} resetValues={resetValues} />}
         </div>
     );
 }
