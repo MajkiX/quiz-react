@@ -2,11 +2,13 @@ import React, { useRef, useState } from 'react';
 import QuizElement from './QuizElement';
 import axios from 'axios';
 import anime from 'animejs'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import bemCssModules from 'bem-css-modules'
+import { useLocation } from 'react-router-dom';
+
 import { default as QuizPageStyle } from './styleModules/QuizPage.module.scss'
 import ResultPage from './ResultPage';
-import { useLocation } from 'react-router-dom';
 
 const style = bemCssModules(QuizPageStyle)
 
@@ -22,10 +24,23 @@ const EasyQuizPage = () => {
 
     const difficulty = location.state?.difficulty
 
+    const decodeHTMLEntities = (str) => {
+        const txt = document.createElement('textarea');
+        txt.innerHTML = str;
+        return txt.value;
+    }
 
     const fetchQuestions = async () => {
         const result = await axios(`https://opentdb.com/api.php?amount=10&difficulty=${difficulty}&type=multiple`)
-        setQuestions(result.data.results)
+
+        const decodedQuestions = result.data.results.map(question => ({
+            ...question,
+            question: decodeHTMLEntities(question.question),
+            correct_answer: decodeHTMLEntities(question.correct_answer),
+            incorrect_answers: question.incorrect_answers.map(answer => decodeHTMLEntities(answer))
+        }));
+
+        setQuestions(decodedQuestions)
     }
 
     const nextQuestion = () => {
@@ -82,8 +97,8 @@ const EasyQuizPage = () => {
 
     const showStartButton = !showQuestions && !showResults &&
         <div className={style("start-box")}>
-            <h1 className={style("dificulty-level")}>You choose a difficulty: {difficulty}</h1>
-            <button onClick={showQuestionsBoxes} className={style("start-button")}>Start</button>
+            <h1 className={style("dificulty-level")}>You choose a difficulty: <p className={style("dificulty-value")}>{difficulty}</p></h1>
+            <button onClick={showQuestionsBoxes} className={style("start-button")}>Start <FontAwesomeIcon icon={faPlay} /></button>
         </div>
 
     const showQuizElement = showQuestions && questions && questionNumber !== 10 &&

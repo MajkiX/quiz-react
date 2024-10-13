@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import bemCssModules from 'bem-css-modules'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
+
 import { default as QuizElementStyle } from './styleModules/QuizElement.module.scss'
 
 const style = bemCssModules(QuizElementStyle)
@@ -37,9 +40,9 @@ const QuizElement = (props) => {
     }
 
     const nextButton = questionNumber < 9 ?
-        <button className={style("next-button")} onClick={nextQuestion}>Next</button>
+        <button className={style("next-button")} onClick={nextQuestion}>Next <FontAwesomeIcon icon={faAngleRight} /></button>
         :
-        <button className={style("result-button")} onClick={showResults}>Results</button>
+        <button className={style("result-button")} onClick={showResults}>Results <FontAwesomeIcon icon={faAnglesRight} /></button>
 
     return (
         <div className={style()}>

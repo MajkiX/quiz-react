@@ -13,15 +13,22 @@
         text-align: center;
     }
 
+
+    &__dificulty-value {
+        text-transform: capitalize;
+    }
+
     &__start-button {
         height: 10vh;
         width: 20vw;
         margin-top: 5vh;
-        background-color: greenyellow;
+        background-color: rgb(185, 247, 226);
         border-radius: 5px;
         border: none;
+        font-size: 2rem;
         cursor: pointer;
-
     }
+
+
 
 }

@@ -1,7 +1,11 @@
 import React from 'react';
 import bemCssModules from 'bem-css-modules'
-import { default as ResultPageStyle } from './styleModules/ResultPage.module.scss'
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
+
+import { default as ResultPageStyle } from './styleModules/ResultPage.module.scss'
+
 const style = bemCssModules(ResultPageStyle)
 
 const ResultPage = (props) => {
@@ -12,7 +16,7 @@ const ResultPage = (props) => {
             <h1>Your Results:</h1>
             <h2>{points} / 10</h2>
             {points === 10 ? <h2>Congratulations</h2> : null}
-            <Link to="/MainPage"><button className={style("return-button")} onClick={resetValues}>Return to Main Page</button></Link>
+            <Link to="/MainPage"><button className={style("return-button")} onClick={resetValues}>Return to Main Page <FontAwesomeIcon icon={faHouse} /></button></Link>
         </div>
     );
 }
