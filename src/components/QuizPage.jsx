@@ -32,6 +32,7 @@ const EasyQuizPage = () => {
     }
 
     const fetchQuestions = async () => {
+        // Api call
         const result = await axios(`https://opentdb.com/api.php?amount=10&difficulty=${difficulty}&type=multiple`)
 
         const decodedQuestions = result.data.results.map(question => ({
@@ -45,12 +46,14 @@ const EasyQuizPage = () => {
     }
 
     const nextQuestion = () => {
+        // Check if asnwer is correct
         if (answer === questions[questionNumber].correct_answer) {
             setPoints(points + 1);
             setAnswerArray([...answerArray, { isCorrect: true }])
         } else {
             setAnswerArray([...answerArray, { isCorrect: false }])
         }
+        // Animation of question fade out
         anime({
             targets: quizBoxRef.current,
             opacity: 0,
@@ -61,6 +64,7 @@ const EasyQuizPage = () => {
                     setQuestionNumber(prev => prev + 1);
                     setAnswer('Choose an answer');
 
+                    // Animation of question fade in
                     anime({
                         targets: quizBoxRef.current,
                         translateX: '0px',
@@ -100,12 +104,14 @@ const EasyQuizPage = () => {
         setAnswerArray([])
     }
 
+    // Dificulty and start button display
     const showStartButton = !showQuestions && !showResults &&
         <div className={style("start-box")}>
             <h1 className={style("dificulty-level")}>You choose a difficulty: <p className={style("dificulty-value")}>{difficulty}</p></h1>
             {difficulty && <button onClick={showQuestionsBoxes} className={style("start-button")}>Start <FontAwesomeIcon icon={faPlay} /></button>}
         </div>
 
+    // Quiz box display
     const showQuizElement = showQuestions && questions && questionNumber !== 10 &&
         <div ref={quizBoxRef}>
             <QuizElement

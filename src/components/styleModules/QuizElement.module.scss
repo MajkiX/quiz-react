@@ -17,12 +17,14 @@
         width: 8vw;
         margin: 0 1vw;
         cursor: pointer;
-        background-color: rgb(185, 247, 226);
+        background-color: rgb(8, 46, 56);
+        color: white;
         border: none;
         font-size: 1rem;
 
         &:hover {
-            background-color: rgb(235, 254, 248);
+            background-color: rgb(185, 247, 226);
+            color: black;
         }
     }
 
@@ -43,13 +45,15 @@
         width: 15vw;
         height: 5vh;
         cursor: pointer;
-        background-color: rgb(185, 247, 226);
+        background-color: rgb(8, 46, 56);
+        color: white;
         border: none;
         font-size: 1.5rem;
         margin-top: 5vh;
 
         &:hover {
-            background-color: rgb(235, 254, 248);
+            background-color: rgb(185, 247, 226);
+            color: black;
         }
     }
 

@@ -48,7 +48,8 @@ const QuizElement = (props) => {
         </button>
         :
         <button className={style("result-button")} onClick={showResults}>
-            Results <FontAwesomeIcon icon={faAnglesRight} />
+            Results
+            <FontAwesomeIcon icon={faAnglesRight} />
         </button>
 
     return (

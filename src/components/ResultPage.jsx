@@ -29,7 +29,12 @@ const ResultPage = (props) => {
             <h2>{points} / 10</h2>
             {points === 10 ? <h2>Congratulations</h2> : null}
             <div className={style('result-box-container')}>{resultBoxes}</div>
-            <Link to="/MainPage"><button className={style("return-button")} onClick={resetValues}>Return to Main Page <FontAwesomeIcon icon={faHouse} /></button></Link>
+            <Link to="/MainPage">
+                <button className={style("return-button")} onClick={resetValues}>
+                    <FontAwesomeIcon icon={faHouse} />
+                    Return to Main Page
+                </button>
+            </Link>
         </div>
     );
 }
