@@ -1,7 +1,6 @@
 .result-page {
-    height: 50vh;
+    height: 55vh;
     width: 70vw;
-    border: 2px solid rgb(177, 255, 222);
     border-radius: 5px;
     background-color: rgb(220, 241, 234);
     display: flex;
@@ -27,25 +26,22 @@
         justify-content: center;
         gap: 1vw;
         margin-bottom: 10vh;
+
+        div {
+            height: 2vw;
+            width: 2vw;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
     }
 
     &__result-box-true {
         background-color: green;
-        height: 2vw;
-        width: 2vw;
-        padding: 10px;
-        text-align: center;
-        font-size: 1.5rem;
-        font-weight: bold;
     }
 
     &__result-box-false {
         background-color: red;
-        height: 2vw;
-        width: 2vw;
-        padding: 10px;
-        text-align: center;
-        font-size: 1.5rem;
-        font-weight: bold;
     }
 }

@@ -1,10 +1,13 @@
 import React from 'react';
 import bemCssModules from 'bem-css-modules'
+
 import { default as MainPageStyle } from './styleModules/MainPage.module.scss'
 
 const style = bemCssModules(MainPageStyle)
 
 const MainPage = () => {
+
+
     return (
         <div className={style()}>
             <h1>Welcome to Quiz</h1>

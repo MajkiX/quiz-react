@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react';
-import QuizElement from './QuizElement';
 import axios from 'axios';
 import anime from 'animejs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import bemCssModules from 'bem-css-modules'
 import { useLocation } from 'react-router-dom';
+import bemCssModules from 'bem-css-modules'
 
-import { default as QuizPageStyle } from './styleModules/QuizPage.module.scss'
+import QuizElement from './QuizElement';
 import ResultPage from './ResultPage';
+import { default as QuizPageStyle } from './styleModules/QuizPage.module.scss'
 
 const style = bemCssModules(QuizPageStyle)
 
@@ -47,9 +47,9 @@ const EasyQuizPage = () => {
     const nextQuestion = () => {
         if (answer === questions[questionNumber].correct_answer) {
             setPoints(points + 1);
-            setAnswerArray([...answerArray, { isCorrect: true, answer: answer }])
+            setAnswerArray([...answerArray, { isCorrect: true }])
         } else {
-            setAnswerArray([...answerArray, { isCorrect: false, answer: answer }])
+            setAnswerArray([...answerArray, { isCorrect: false }])
         }
         anime({
             targets: quizBoxRef.current,
@@ -103,7 +103,7 @@ const EasyQuizPage = () => {
     const showStartButton = !showQuestions && !showResults &&
         <div className={style("start-box")}>
             <h1 className={style("dificulty-level")}>You choose a difficulty: <p className={style("dificulty-value")}>{difficulty}</p></h1>
-            <button onClick={showQuestionsBoxes} className={style("start-button")}>Start <FontAwesomeIcon icon={faPlay} /></button>
+            {difficulty && <button onClick={showQuestionsBoxes} className={style("start-button")}>Start <FontAwesomeIcon icon={faPlay} /></button>}
         </div>
 
     const showQuizElement = showQuestions && questions && questionNumber !== 10 &&

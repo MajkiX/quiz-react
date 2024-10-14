@@ -12,7 +12,7 @@ const Header = () => {
 
     return (
         <div className={style()}>
-            <Link to='/'>
+            <Link to='/MainPage'>
                 <button className={style("buttons")}><FontAwesomeIcon icon={faHouse} /></button>
             </Link>
             <Link to='/QuizPage' state={{ difficulty: "easy" }}>

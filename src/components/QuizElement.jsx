@@ -12,7 +12,7 @@ const QuizElement = (props) => {
 
     const [shuffledAnswers, setShuffledAnswers] = useState([]);
 
-    // randomization of idexes in array
+    // Randomization of idexes in array
     useEffect(() => {
         const arrayOfAnswers = [...incorrect_answers, correct_answer];
         let randomIndex = Math.floor(Math.random() * 4);
@@ -23,6 +23,7 @@ const QuizElement = (props) => {
         setShuffledAnswers(arrayOfAnswers);
     }, [correct_answer, incorrect_answers])
 
+    // Answer buttons display
     const answers = shuffledAnswers.map(answer => (
         <button
             className={style("answer-button")}
@@ -39,16 +40,22 @@ const QuizElement = (props) => {
         handleShowResults()
     }
 
+    // Next or Resluts button
     const nextButton = questionNumber < 9 ?
-        <button className={style("next-button")} onClick={nextQuestion}>Next <FontAwesomeIcon icon={faAngleRight} /></button>
+        <button className={style("next-button")} onClick={nextQuestion}>
+            Next
+            <FontAwesomeIcon icon={faAngleRight} />
+        </button>
         :
-        <button className={style("result-button")} onClick={showResults}>Results <FontAwesomeIcon icon={faAnglesRight} /></button>
+        <button className={style("result-button")} onClick={showResults}>
+            Results <FontAwesomeIcon icon={faAnglesRight} />
+        </button>
 
     return (
         <div className={style()}>
-            <h3 className={style("category")}>{category}</h3>
-            <p className={style("question")}>{question}</p>
-            <p className={style("answer")}>{answer}</p>
+            <h2 className={style("category")}>{category}</h2>
+            <h1 className={style("question")}>{question}</h1>
+            <h3 className={style("answer")}>{answer}</h3>
             <div className={style("answer-box")}>{answers}</div>
             <br />
             {nextButton}
