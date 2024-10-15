@@ -9,7 +9,7 @@
     background-color: rgb(8, 46, 56);
 
     button {
-        height: 5vmin;
+        height: 5vh;
         width: 5vmax;
         color: white;
         border-radius: 5px;
@@ -25,5 +25,12 @@
 
     &__linkedin-button {
         background-color: #0a66c2;
+    }
+
+    @media only screen and (max-width: 1100px) {
+        button {
+            width: 10vmax;
+            margin-right: 3vw;
+        }
     }
 }

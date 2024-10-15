@@ -44,4 +44,28 @@
     &__result-box-false {
         background-color: red;
     }
+
+
+    @media only screen and (max-width: 1000px) {
+
+        margin-top: 0;
+
+        &__result-box-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto;
+            grid-template-rows: auto auto;
+            gap: 2vmax;
+            margin-bottom: 3vh;
+
+            div {
+                height: 3vh;
+                width: 3vh;
+                font-size: 0.8rem;
+            }
+        }
+
+        &__return-button {
+            font-size: 1rem;
+        }
+    }
 }
