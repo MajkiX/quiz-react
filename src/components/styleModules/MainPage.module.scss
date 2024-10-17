@@ -1,13 +1,13 @@
 .mainpage {
     height: 50vh;
-    width: 65vw;
+    width: 35vw;
     padding: 30px;
-    margin: 10vh auto;
+    margin: 5vh auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    background-color: rgb(8, 46, 56);
+    border-radius: 5px;
     color: white;
 
     @media only screen and (max-width: 900px) {

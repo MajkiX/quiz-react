@@ -2,7 +2,6 @@
     height: 55vh;
     width: 70vw;
     border-radius: 5px;
-    background-color: rgb(220, 241, 234);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,12 +11,14 @@
     &__return-button {
         padding: 35px;
         cursor: pointer;
-        background-color: rgb(185, 247, 226);
+        background-color: #535C91;
+        color: #EEEEEE;
         border: none;
         font-size: 2rem;
 
         &:hover {
-            background-color: rgb(235, 254, 248);
+            background-color: #454444;
+            color: #1E1C1C;
         }
     }
 

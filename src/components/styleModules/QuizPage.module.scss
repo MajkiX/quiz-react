@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #EEEEEE;
 
     &__start-box {
         display: flex;
@@ -11,18 +12,22 @@
 
     &__dificulty-level {
         text-align: center;
+        background-color: #323232;
+        width: 22vw;
     }
-
 
     &__dificulty-value {
         text-transform: capitalize;
+        margin: 0;
+        font-size: 2.5rem;
     }
 
     &__start-button {
         height: 10vh;
         width: 20vmax;
         margin-top: 5vh;
-        background-color: rgb(185, 247, 226);
+        background-color: #535C91;
+        color: #EEEEEE;
         border-radius: 5px;
         border: none;
         font-size: 2rem;
