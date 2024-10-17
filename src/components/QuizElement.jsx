@@ -8,7 +8,18 @@ import { default as QuizElementStyle } from './styleModules/QuizElement.module.s
 const style = bemCssModules(QuizElementStyle)
 
 const QuizElement = (props) => {
-    const { category, question, correct_answer, incorrect_answers, questionNumber, nextQuestion, handleCheckButton, hideQuestions, handleShowResults, answer } = props
+    const {
+        category,
+        question,
+        correct_answer,
+        incorrect_answers,
+        questionNumber,
+        nextQuestion,
+        handleCheckButton,
+        hideQuestions,
+        handleShowResults,
+        answer,
+    } = props
 
     const [shuffledAnswers, setShuffledAnswers] = useState([]);
 
@@ -47,7 +58,7 @@ const QuizElement = (props) => {
             <FontAwesomeIcon icon={faAngleRight} />
         </button>
         :
-        <button className={style("result-button")} onClick={showResults}>
+        <button className={style("next-button")} onClick={showResults}>
             Results
             <FontAwesomeIcon icon={faAnglesRight} />
         </button>

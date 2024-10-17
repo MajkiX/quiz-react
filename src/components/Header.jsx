@@ -13,7 +13,7 @@ const Header = () => {
     return (
         <div className={style()}>
             <Link to='/MainPage'>
-                <button className={style("buttons")}><FontAwesomeIcon icon={faHouse} /></button>
+                <button style={{ borderRadius: '15px 0 0 15px' }} className={style("buttons")}><FontAwesomeIcon icon={faHouse} /></button>
             </Link>
             <Link to='/QuizPage' state={{ difficulty: "easy" }}>
                 <button className={style("buttons")}>Easy</button>
@@ -22,7 +22,7 @@ const Header = () => {
                 <button className={style("buttons")}>Medium</button>
             </Link>
             <Link to='/QuizPage' state={{ difficulty: "hard" }}>
-                <button className={style("buttons")}>Hard</button>
+                <button style={{ borderRadius: '0 15px 15px 0' }} className={style("buttons")}>Hard</button>
             </Link>
         </div>
     );

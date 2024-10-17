@@ -10,37 +10,36 @@
         align-items: center;
     }
 
-    &__dificulty-level {
+    &__difficulty-level {
         text-align: center;
         background-color: #323232;
+        border-radius: 15px;
+        padding: 1vh 0;
         width: 22vmax;
+        margin-top: 5vh;
     }
 
-    &__dificulty-value {
+    &__difficulty-value {
         text-transform: capitalize;
         margin: 0;
         font-size: 2.5rem;
     }
 
     &__start-button {
-        height: 10vh;
-        width: 20vmax;
-        margin-top: 5vh;
+        height: 8vh;
+        width: 15vmax;
+        margin-top: 2vh;
         background-color: #535C91;
         color: #EEEEEE;
-        border-radius: 5px;
+        border-radius: 15px;
         border: none;
         font-size: 2rem;
         cursor: pointer;
     }
 
     @media only screen and (max-width: 1000px) {
-
         &__dificulty-level {
-
             font-size: 1rem;
         }
-
-        &__dificulty-value {}
     }
 }

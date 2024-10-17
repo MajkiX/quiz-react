@@ -13,18 +13,19 @@
 
     &__answer-button {
         padding: 20px;
-        height: 10vh;
-        width: 8vw;
+        height: 11vh;
+        width: 9vw;
         margin: 0 1vw;
         cursor: pointer;
-        background-color: rgb(8, 46, 56);
-        color: white;
+        background-color: #535C91;
+        color: #EEEEEE;
         border: none;
+        border-radius: 5px;
         font-size: 1rem;
 
         &:hover {
-            background-color: rgb(185, 247, 226);
-            color: black;
+            background-color: #454444;
+            color: #1E1C1C;
         }
     }
 
@@ -42,35 +43,21 @@
     }
 
     &__next-button {
-        width: 15vw;
+        width: 10vmax;
         height: 5vh;
         cursor: pointer;
-        background-color: rgb(8, 46, 56);
-        color: white;
+        background-color: #535C91;
+        color: #EEEEEE;
         border: none;
+        border-radius: 15px;
         font-size: 1.5rem;
         margin-top: 5vh;
 
         &:hover {
-            background-color: rgb(185, 247, 226);
-            color: black;
+            background-color: #454444;
+            color: #1E1C1C;
         }
     }
-
-    &__result-button {
-        width: 15vw;
-        height: 5vh;
-        cursor: pointer;
-        background-color: rgb(121, 255, 210);
-        border: none;
-        font-size: 1.5rem;
-        margin-top: 5vh;
-
-        &:hover {
-            background-color: rgb(235, 254, 248);
-        }
-    }
-
 
     @media only screen and (max-width: 1000px) {
         margin: 0 1vw;

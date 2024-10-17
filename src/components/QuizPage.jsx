@@ -107,7 +107,7 @@ const EasyQuizPage = () => {
     // Dificulty and start button display
     const showStartButton = !showQuestions && !showResults &&
         <div className={style("start-box")}>
-            <h1 className={style("dificulty-level")}>You choose a difficulty: <p className={style("dificulty-value")}>{difficulty}</p></h1>
+            <h1 className={style("difficulty-level")}>You choose a difficulty: <p className={style("difficulty-value")}>{difficulty}</p></h1>
             {difficulty && <button onClick={showQuestionsBoxes} className={style("start-button")}>Start <FontAwesomeIcon icon={faPlay} /></button>}
         </div>
 
