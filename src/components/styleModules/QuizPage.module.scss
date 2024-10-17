@@ -38,8 +38,12 @@
     }
 
     @media only screen and (max-width: 1000px) {
-        &__dificulty-level {
+        &__difficulty-level {
             font-size: 1rem;
+        }
+
+        &__start-button {
+            width: 23vmax;
         }
     }
 }
