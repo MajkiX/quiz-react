@@ -13,7 +13,7 @@
     &__dificulty-level {
         text-align: center;
         background-color: #323232;
-        width: 22vw;
+        width: 22vmax;
     }
 
     &__dificulty-value {
@@ -34,4 +34,13 @@
         cursor: pointer;
     }
 
+    @media only screen and (max-width: 1000px) {
+
+        &__dificulty-level {
+
+            font-size: 1rem;
+        }
+
+        &__dificulty-value {}
+    }
 }

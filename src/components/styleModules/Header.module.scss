@@ -9,7 +9,7 @@
 
     &__buttons {
         height: 5vh;
-        width: 10vw;
+        width: 10vmax;
         cursor: pointer;
         background-color: #535C91;
         color: #EEEEEE;
@@ -30,8 +30,7 @@
     @media only screen and (max-width: 1000px) {
 
         &__buttons {
-            font-size: 1rem;
-            width: 8vmax;
+            font-size: 0.9rem;
         }
     }
 }
