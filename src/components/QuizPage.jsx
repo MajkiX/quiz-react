@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import anime from 'animejs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
