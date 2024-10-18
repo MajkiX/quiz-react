@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import anime from 'animejs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,10 +9,13 @@ import bemCssModules from 'bem-css-modules'
 import QuizElement from './QuizElement';
 import ResultPage from './ResultPage';
 import { default as QuizPageStyle } from './styleModules/QuizPage.module.scss'
+import CategoryForm from './CategoryForm';
 
 const style = bemCssModules(QuizPageStyle)
 
-const EasyQuizPage = () => {
+const QuizPage = (props) => {
+    const { categoryArray } = props
+
     const [questions, setQuestions] = useState(null)
     const [showQuestions, setShowQuestions] = useState(false)
     const [showResults, setShowResults] = useState(false)
@@ -20,10 +23,17 @@ const EasyQuizPage = () => {
     const [answer, setAnswer] = useState('Chosse an answer')
     const [points, setPoints] = useState(0)
     const [answerArray, setAnswerArray] = useState([])
+    const [category, setCategory] = useState('')
     const location = useLocation()
     const quizBoxRef = useRef(null)
 
     const difficulty = location.state?.difficulty
+
+
+    const API_URL = category ?
+        `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`
+        :
+        `https://opentdb.com/api.php?amount=10&difficulty=${difficulty}&type=multiple`
 
     const decodeHTMLEntities = (str) => {
         const txt = document.createElement('textarea');
@@ -33,7 +43,7 @@ const EasyQuizPage = () => {
 
     const fetchQuestions = async () => {
         // Api call
-        const result = await axios(`https://opentdb.com/api.php?amount=10&difficulty=${difficulty}&type=multiple`)
+        const result = await axios(API_URL)
 
         const decodedQuestions = result.data.results.map(question => ({
             ...question,
@@ -78,6 +88,10 @@ const EasyQuizPage = () => {
         });
     }
 
+    const handleSetCategory = (category) => {
+        setCategory(category)
+    }
+
     const handleShowResults = () => {
         setShowResults(!showResults)
     }
@@ -85,6 +99,7 @@ const EasyQuizPage = () => {
     const showQuestionsBoxes = () => {
         fetchQuestions()
         setShowQuestions(!showQuestions)
+        setCategory('')
     }
 
     const handleAnswerButton = (answer) => {
@@ -108,6 +123,12 @@ const EasyQuizPage = () => {
     const showStartButton = !showQuestions && !showResults &&
         <div className={style("start-box")}>
             <h1 className={style("difficulty-level")}>You choose a difficulty: <p className={style("difficulty-value")}>{difficulty}</p></h1>
+            <div>
+                <CategoryForm
+                    categoryArray={categoryArray}
+                    handleSetCategory={handleSetCategory}
+                />
+            </div>
             {difficulty && <button onClick={showQuestionsBoxes} className={style("start-button")}>Start <FontAwesomeIcon icon={faPlay} /></button>}
         </div>
 
@@ -128,6 +149,7 @@ const EasyQuizPage = () => {
             />
         </div>
 
+
     return (
         <div className={style()}>
             {showStartButton}
@@ -137,4 +159,4 @@ const EasyQuizPage = () => {
     );
 }
 
-export default EasyQuizPage;
+export default QuizPage;

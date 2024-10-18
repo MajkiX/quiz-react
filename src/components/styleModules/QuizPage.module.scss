@@ -35,6 +35,11 @@
         border: none;
         font-size: 2rem;
         cursor: pointer;
+
+        &:hover {
+            background-color: #454444;
+            color: #1E1C1C;
+        }
     }
 
     @media only screen and (max-width: 1000px) {

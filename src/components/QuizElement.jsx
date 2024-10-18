@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import bemCssModules from 'bem-css-modules'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
@@ -34,8 +34,8 @@ const QuizElement = (props) => {
         setShuffledAnswers(arrayOfAnswers);
     }, [correct_answer, incorrect_answers])
 
-    // Answer buttons display
-    const answers = shuffledAnswers.map(answer => (
+    // Answers buttons display
+    const answers = useMemo(() => shuffledAnswers.map(answer => (
         <button
             className={style("answer-button")}
             key={answer}
@@ -43,7 +43,7 @@ const QuizElement = (props) => {
         >
             {answer}
         </button>
-    ))
+    )), [shuffledAnswers, handleCheckButton])
 
     const showResults = () => {
         nextQuestion()
