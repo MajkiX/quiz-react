@@ -14,9 +14,7 @@ const Main = () => {
         setCategoryArray(result.data.trivia_categories);
     }
 
-    useEffect(() => {
-        fechCategory()
-    }, [])
+    fechCategory()
 
     return (
         <Routes>
