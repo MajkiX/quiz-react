@@ -12,10 +12,9 @@
     }
 
     &__answer-button {
-        padding: 20px;
-        height: 11vh;
-        width: 9vw;
-        margin: 0 1vw;
+        height: 13vh;
+        width: 10vw;
+        margin: 3vh 1.5vw;
         cursor: pointer;
         background-color: #535C91;
         color: #EEEEEE;
@@ -89,7 +88,8 @@
         &__answer-button {
             width: 18vmax;
             height: 13vmax;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
+            margin: 0;
         }
 
         &__next-button,

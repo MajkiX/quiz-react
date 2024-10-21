@@ -6,9 +6,12 @@
     background-color: #323232;
     padding: 15px;
     border-radius: 15px;
+    align-content: space-evenly;
+    justify-content: space-evenly;
 
     @media only screen and (max-width: 1000px) {
         font-size: 0.8rem;
+        gap: 0.5vh;
         grid-template-columns: auto;
         overflow-y: scroll;
     }

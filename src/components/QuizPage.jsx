@@ -29,7 +29,7 @@ const QuizPage = (props) => {
 
     const difficulty = location.state?.difficulty
 
-
+    // Specific category or not
     const API_URL = category ?
         `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`
         :
@@ -45,11 +45,11 @@ const QuizPage = (props) => {
         // Api call
         const result = await axios(API_URL)
 
-        const decodedQuestions = result.data.results.map(question => ({
-            ...question,
-            question: decodeHTMLEntities(question.question),
-            correct_answer: decodeHTMLEntities(question.correct_answer),
-            incorrect_answers: question.incorrect_answers.map(answer => decodeHTMLEntities(answer))
+        const decodedQuestions = result.data.results.map(resultQuestion => ({
+            ...resultQuestion,
+            question: decodeHTMLEntities(resultQuestion.question),
+            correct_answer: decodeHTMLEntities(resultQuestion.correct_answer),
+            incorrect_answers: resultQuestion.incorrect_answers.map(answer => decodeHTMLEntities(answer))
         }));
 
         setQuestions(decodedQuestions)
@@ -100,6 +100,7 @@ const QuizPage = (props) => {
         fetchQuestions()
         setShowQuestions(!showQuestions)
         setCategory('')
+        console.log(category);
     }
 
     const handleAnswerButton = (answer) => {
@@ -133,7 +134,7 @@ const QuizPage = (props) => {
         </div>
 
     // Quiz box display
-    const showQuizElement = showQuestions && questions && questionNumber !== 10 &&
+    const showQuizElement = showQuestions && questions && questions[questionNumber] && questionNumber !== 10 &&
         <div ref={quizBoxRef}>
             <QuizElement
                 category={questions[questionNumber].category}
@@ -149,12 +150,14 @@ const QuizPage = (props) => {
             />
         </div>
 
+    const loading = !showStartButton && !showQuizElement && !showResults && <h1>Loading</h1>
 
     return (
         <div className={style()}>
+            {loading}
             {showStartButton}
             {showQuizElement}
-            {!showResults ? null : <ResultPage points={points} answerArray={answerArray} resetValues={resetValues} />}
+            {showResults && <ResultPage points={points} answerArray={answerArray} resetValues={resetValues} />}
         </div>
     );
 }

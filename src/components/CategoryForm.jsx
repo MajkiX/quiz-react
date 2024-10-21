@@ -22,19 +22,21 @@ const CategoryForm = (props) => {
     ))
 
     return (
-        <form className={style()}>
-            {/* <label htmlFor="any">
-                <input
-                    onChange={(e) => handleSetCategory(e.target.value)}
-                    type="radio"
-                    name="categoryForm"
-                    value={''}
-                    id="any"
-                />
-                Any
-            </label> */}
-            {categoryForm}
-        </form>
+        <div>
+            <form className={style()}>
+                <label htmlFor="any">
+                    <input
+                        onChange={(e) => handleSetCategory(e.target.value)}
+                        type="radio"
+                        name="categoryForm"
+                        value={''}
+                        id="any"
+                    />
+                    Any
+                </label>
+                {categoryForm}
+            </form>
+        </div>
     );
 }
 
